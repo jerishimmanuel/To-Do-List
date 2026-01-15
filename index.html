@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>To-Do List</title>
+</head>
+<body>
+
+    <h1>My Tasks</h1>
+    <input id="input" placeholder="Enter your task" type="text" >
+    <button onclick="add()">Add task</button>
+
+    <ul id="completed">
+
+    </ul>
+
+    <ul id="list">
+
+    </ul>
+
+    
+    <script>
+        var ul = document.getElementById("list");
+        var input = document.getElementById("input");
+        function add(){
+            if(input.value.trim() == "")
+            {
+                alert("Please enter a task");
+                return;
+            }
+            var listitem = document.createElement("li");
+            listitem.innerHTML = input.value + "<button onclick='deleteItem(event)'>Delete task</button>" + "<button onclick='mark(event)'>Mark completed</button>";
+            ul.append(listitem);
+        }
+
+        function deleteItem(event){
+            event.target.parentElement.remove(); 
+        }
+
+        var completed = document.getElementById('completed');
+        function mark(event){
+            var parentLi = event.target.parentElement;
+            var listitemComp = document.createElement("li");
+            
+            listitemComp.textContent = parentLi.firstChild.textContent + " Completed";
+            completed.append(listitemComp);
+            parentLi.remove();
+        }
+    </script>
+</body>
+</html>
