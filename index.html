@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A simple to-do list web app to add, delete, and mark tasks as completed. Built using HTML, CSS, and JavaScript.">
+    <meta name="description"
+        content="A simple to-do list web app to add, delete, and mark tasks as completed. Built using HTML, CSS, and JavaScript.">
 
     <meta name="keywords" content="to-do list, task manager, javascript to-do app, simple task list">
 
@@ -11,48 +13,56 @@
     <link rel="stylesheet" href="style.css">
     <title>Simple To-Do List App | Manage Daily Tasks Easily</title>
 </head>
+
 <body>
-
-    <h1>My Tasks</h1>
-    <input id="input" placeholder="Enter your task" type="text" >
-    <button onclick="add()">Add task</button>
-
-    <ul id="completed">
-
-    </ul>
-
-    <ul id="list">
-
-    </ul>
-
-    
+    <main>
+        <header>
+            <h1>Simple To-Do List Application</h1>
+            <p>Manage your daily tasks by adding, deleting and completing them easily.</p>
+        </header>
+        <section>
+            <label for="input">Enter a new Task</label>
+            <input id="input" type="text" placeholder="Enter your task">
+            <button onclick="add()">Add task</button>
+        </section>
+        <section>
+            <ul id="completed">
+            </ul>
+        </section>
+        <section>
+            <ul id="list">
+            </ul>
+        </section>
+    </main>
     <script>
         var ul = document.getElementById("list");
         var input = document.getElementById("input");
-        function add(){
-            if(input.value.trim() == "")
-            {
+        function add() {
+            if (input.value.trim() == "") {
                 alert("Please enter a task");
                 return;
             }
             var listitem = document.createElement("li");
             listitem.innerHTML = input.value + "<button onclick='deleteItem(event)'>Delete task</button>" + "<button onclick='mark(event)'>Mark completed</button>";
             ul.append(listitem);
+            input.value = "";
         }
 
-        function deleteItem(event){
-            event.target.parentElement.remove(); 
+        function deleteItem(event) {
+            event.target.parentElement.remove();
         }
 
         var completed = document.getElementById('completed');
-        function mark(event){
+        function mark(event) {
             var parentLi = event.target.parentElement;
             var listitemComp = document.createElement("li");
-            
+
             listitemComp.textContent = parentLi.firstChild.textContent + " Completed";
             completed.append(listitemComp);
             parentLi.remove();
         }
     </script>
+
 </body>
+
 </html>

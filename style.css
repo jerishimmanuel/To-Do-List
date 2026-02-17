@@ -1,3 +1,6 @@
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 body{
     background-image: url("images/morning.avif");
     background-repeat: no-repeat;
@@ -36,4 +39,8 @@ button{
     cursor: pointer;
     color: white;
     background-color: #45a049;
+}
+
+p{
+    text-align: center;
 }
