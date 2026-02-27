@@ -23,45 +23,19 @@
         <section>
             <label for="input">Enter a new Task</label>
             <input id="input" type="text" placeholder="Enter your task">
-            <button onclick="add()">Add task</button>
+            <button id="addBtn" type="button">Add task</button>
         </section>
         <section>
-            <ul id="completed">
-            </ul>
-        </section>
-        <section>
-            <ul id="list">
-            </ul>
+            <h2>Pending Tasks</h2>
+<ul id="list"></ul>
+
+<h2>Completed Tasks</h2>
+<ul id="completed"></ul>
+
         </section>
     </main>
-    <script>
-        var ul = document.getElementById("list");
-        var input = document.getElementById("input");
-        function add() {
-            if (input.value.trim() == "") {
-                alert("Please enter a task");
-                return;
-            }
-            var listitem = document.createElement("li");
-            listitem.innerHTML = input.value + "<button onclick='deleteItem(event)'>Delete task</button>" + "<button onclick='mark(event)'>Mark completed</button>";
-            ul.append(listitem);
-            input.value = "";
-        }
-
-        function deleteItem(event) {
-            event.target.parentElement.remove();
-        }
-
-        var completed = document.getElementById('completed');
-        function mark(event) {
-            var parentLi = event.target.parentElement;
-            var listitemComp = document.createElement("li");
-
-            listitemComp.textContent = parentLi.firstChild.textContent + " Completed";
-            completed.append(listitemComp);
-            parentLi.remove();
-        }
-    </script>
+    
+    <script src="script.js"></script>
 
 </body>
 
